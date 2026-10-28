@@ -405,6 +405,17 @@ body:hover .spotlight {
     to { height: 100%; }
 }
 
+.sound-toggle.needs-tap {
+    border-color: var(--sky);
+    color: var(--sky);
+    animation: sound-nudge 1.8s var(--ease-in-out) infinite;
+}
+
+@keyframes sound-nudge {
+    0%, 100% { box-shadow: 0 0 0 0 var(--sky-dim); }
+    50% { box-shadow: 0 0 0 7px var(--sky-dim); }
+}
+
 .header-booking {
     display: flex;
     align-items: center;

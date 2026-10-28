@@ -233,22 +233,71 @@
         });
     }
 
-    /* ---------- sonido en directo ---------- */
+    /* ---------- sonido: arranca solo al entrar ---------- */
     const soundToggle = document.querySelector('.sound-toggle');
     const scFrame = document.getElementById('sc-hidden');
     const soundLabel = soundToggle ? soundToggle.querySelector('.sound-label') : null;
+    const PREF = 'bobrususso';
+    const GESTURES = ['pointerdown', 'keydown', 'wheel'];
     let widget = null;
+    let playing = false;
+    let nudgeTimer = 0;
+
+    const prefOn = () => {
+        try { return localStorage.getItem(PREF) !== 'off'; } catch (error) { return true; }
+    };
+
+    const prefSave = on => {
+        try { localStorage.setItem(PREF, on ? 'on' : 'off'); } catch (error) { /* modo privado */ }
+    };
+
+    function setSound(state) {
+        playing = state;
+        if (!soundToggle) return;
+        soundToggle.setAttribute('aria-pressed', String(state));
+        if (state) {
+            clearTimeout(nudgeTimer);
+            soundToggle.classList.remove('needs-tap');
+            GESTURES.forEach(name => window.removeEventListener(name, onGesture));
+        }
+        if (soundLabel && !soundToggle.classList.contains('needs-tap')) {
+            soundLabel.textContent = state ? 'En directo' : 'Suena';
+            soundToggle.setAttribute('aria-label', state ? 'Pausar la música' : 'Poner la música');
+        }
+    }
+
+    function tryPlay() {
+        if (!widget || playing || !prefOn()) return;
+        try { widget.play(); } catch (error) { /* aún sin gestos el navegador lo corta */ }
+    }
+
+    function onGesture() {
+        tryPlay();
+    }
+
+    /* el navegador solo deja sonar sin toque si ya tiene confianza con la web;
+       si a los 2s no suena, el botón del header pulsa para pedir un toque */
+    function armNudge() {
+        clearTimeout(nudgeTimer);
+        nudgeTimer = setTimeout(() => {
+            if (playing || !soundToggle || !prefOn()) return;
+            soundToggle.classList.add('needs-tap');
+            if (soundLabel) soundLabel.textContent = 'Toca y suena';
+            soundToggle.setAttribute('aria-label', 'Toca para poner la música');
+        }, 2200);
+    }
 
     if (scFrame && typeof SC !== 'undefined' && SC.Widget) {
         widget = SC.Widget(scFrame);
         widget.bind(SC.Widget.Events.PLAY, () => setSound(true));
         widget.bind(SC.Widget.Events.PAUSE, () => setSound(false));
+        widget.bind(SC.Widget.Events.READY, () => tryPlay());
     }
 
-    function setSound(playing) {
-        if (!soundToggle) return;
-        soundToggle.setAttribute('aria-pressed', String(playing));
-        if (soundLabel) soundLabel.textContent = playing ? 'En directo' : 'Suena';
+    if (prefOn()) {
+        tryPlay();
+        armNudge();
+        GESTURES.forEach(name => window.addEventListener(name, onGesture, { passive: true }));
     }
 
     if (soundToggle) {
@@ -258,9 +307,10 @@
                 return;
             }
             widget.isPaused(paused => {
+                prefSave(paused);
                 if (paused) widget.play();
                 else widget.pause();
-                setSound(!paused);
+                setSound(paused);
             });
         });
     }
