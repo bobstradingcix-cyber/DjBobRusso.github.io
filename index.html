@@ -25,23 +25,25 @@
 <body>
     <div class="grain"></div>
     <div class="cursor"></div>
-    <div id="sc-player" style="position: fixed; bottom: -1px; left: 0; width: 100%; z-index: 9999; opacity: 0; pointer-events: none;"></div>
+    <audio id="bg-audio" preload="auto" autoplay playsinline>
+        <source src="https://api.soundcloud.com/tracks/placeholder/stream?client_id=YOUR_CLIENT_ID" type="audio/mpeg">
+    </audio>
+    <iframe id="sc-hidden" width="0" height="0" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/djbobrusso/dj-bob-russo&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false"></iframe>
     <script src="https://w.soundcloud.com/player/api.js"></script>
     <script>
-        window.addEventListener('load', function() {
-            var iframe = document.createElement('iframe');
-            iframe.width = '100%';
-            iframe.height = '0';
-            iframe.scrolling = 'no';
-            iframe.frameBorder = 'no';
-            iframe.allow = 'autoplay';
-            iframe.src = 'https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/djbobrusso/dj-bob-russo&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false';
-            document.getElementById('sc-player').appendChild(iframe);
+        (function() {
+            var iframe = document.getElementById('sc-hidden');
             var widget = SC.Widget(iframe);
-            widget.bind(SC.Widget.Events.READY, function() {
-                widget.play();
-            });
-        });
+            function play() {
+                try { widget.play(); } catch(e) {}
+            }
+            widget.bind(SC.Widget.Events.READY, play);
+            widget.bind(SC.Widget.Events.PLAY, function(){});
+            document.addEventListener('click', play, { once: true });
+            document.addEventListener('touchstart', play, { once: true });
+            document.addEventListener('keydown', play, { once: true });
+            window.addEventListener('load', play);
+        })();
     </script>
 
     <header class="header">
@@ -49,11 +51,10 @@
             <a class="logo" href="#inicio">DJ BOB RUSSO</a>
             <nav class="nav">
                 <a href="#inicio">Inicio</a>
-                <a href="#sobre-mi">Sobre mí</a>
+                <a href="#redes">Redes</a>
                 <a href="#musica">Música</a>
                 <a href="#eventos">Eventos</a>
                 <a href="#booking">Booking</a>
-                <a href="#redes">Redes</a>
             </nav>
             <a class="header-booking" href="https://wa.me/51902380981" target="_blank" rel="noopener">
                 <span>Booking</span>
@@ -66,11 +67,10 @@
         </div>
         <div class="mobile-nav">
             <a href="#inicio">Inicio</a>
-            <a href="#sobre-mi">Sobre mí</a>
+            <a href="#redes">Redes</a>
             <a href="#musica">Música</a>
             <a href="#eventos">Eventos</a>
             <a href="#booking">Booking</a>
-            <a href="#redes">Redes</a>
             <a class="mobile-booking" href="https://wa.me/51902380981" target="_blank" rel="noopener">WhatsApp Directo</a>
         </div>
     </header>
@@ -101,14 +101,6 @@
                             <i class="ti ti-brand-whatsapp"></i>
                             <span>+51 902 380 981</span>
                         </a>
-                        <a class="btn btn-secondary" href="https://instagram.com/DjBobRusso" target="_blank" rel="noopener">
-                            <i class="ti ti-brand-instagram"></i>
-                            <span>@DjBobRusso</span>
-                        </a>
-                        <a class="btn btn-secondary" href="https://tiktok.com/@DjBobRusso" target="_blank" rel="noopener">
-                            <i class="ti ti-brand-tiktok"></i>
-                            <span>@DjBobRusso</span>
-                        </a>
                         <a class="btn btn-secondary" href="#musica">
                             <span>Escuchar sets</span>
                             <i class="ti ti-player-play"></i>
@@ -120,6 +112,25 @@
                     <div class="scroll-indicator"></div>
                 </div>
             </div>
+            <div class="hero-bottom-bar">
+                <div class="hero-bottom-inner">
+                    <div class="hero-social-mini">
+                        <span class="hero-social-label">Redes sociales</span>
+                        <div class="hero-social-links">
+                            <a href="https://instagram.com/DjBobRusso" target="_blank" rel="noopener" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+                            <a href="https://tiktok.com/@DjBobRusso" target="_blank" rel="noopener" aria-label="TikTok"><i class="ti ti-brand-tiktok"></i></a>
+                            <a href="https://youtube.com/@DjBobRusso" target="_blank" rel="noopener" aria-label="YouTube"><i class="ti ti-brand-youtube"></i></a>
+                            <a href="https://soundcloud.com/DjBobRusso" target="_blank" rel="noopener" aria-label="SoundCloud"><i class="ti ti-brand-soundcloud"></i></a>
+                            <a href="https://mixcloud.com/DjBobRusso" target="_blank" rel="noopener" aria-label="Mixcloud"><i class="ti ti-cloud"></i></a>
+                            <a href="https://facebook.com/DjBobRusso" target="_blank" rel="noopener" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></a>
+                        </div>
+                    </div>
+                    <div class="hero-follow-text">
+                        <span>Sígueme en <strong>@DjBobRusso</strong></span>
+                        <span>Clips, reels, sets en directo y las últimas novedades.</span>
+                    </div>
+                </div>
+            </div>
             <div class="hero-marquee">
                 <div class="marquee-content">
                     <span>HOUSE • DISCO • FUNK • R&B • AFRO HOUSE • TECH HOUSE • REGGAETÓN • OPEN FORMAT •</span>
@@ -128,51 +139,7 @@
             </div>
         </section>
 
-        <section class="section" id="sobre-mi">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <span class="section-label">Sobre mí</span>
-                    <h2 class="section-title">Energía adaptada a cada momento</h2>
-                    <p class="section-description">
-                        Un enfoque profesional basado en experiencia, versatilidad y gusto musical impecable.
-                    </p>
-                </div>
-                <div class="features-grid">
-                    <article class="feature-card fade-in">
-                        <span class="feature-number">01</span>
-                        <h3 class="feature-title">+15 Años de experiencia</h3>
-                        <p class="feature-text">
-                            Trayectoria construida pinchando en las mejores salas, discotecas, bodas y eventos privados con 
-                            un objetivo claro: crear el ambiente perfecto.
-                        </p>
-                    </article>
-                    <article class="feature-card fade-in">
-                        <span class="feature-number">02</span>
-                        <h3 class="feature-title">Música variada</h3>
-                        <p class="feature-text">
-                            Desde house y disco hasta funk, R&B, afro house, tech house y reggaetón. 
-                            Una selección ecléctica pensada para conectar con cualquier público.
-                        </p>
-                    </article>
-                    <article class="feature-card fade-in">
-                        <span class="feature-number">03</span>
-                        <h3 class="feature-title">Impeccable taste</h3>
-                        <p class="feature-text">
-                            Transiciones milimétricas, builds con intención y una curaduría cuidada al detalle 
-                            para momentos que perduran en el recuerdo.
-                        </p>
-                    </article>
-                </div>
-                <div class="quote-block fade-in">
-                    <blockquote class="quote-text">
-                        "Buena música no es para un género, es para crear el momento perfecto."
-                    </blockquote>
-                    <cite class="quote-author">— DJ Bob Russo</cite>
-                </div>
-            </div>
-        </section>
-
-        <section class="section section-alt" id="musica">
+        <section class="section" id="musica">
             <div class="container">
                 <div class="section-header split-header fade-in">
                     <div>
@@ -180,7 +147,7 @@
                         <h2 class="section-title">Escucha mis sets</h2>
                     </div>
                     <p class="section-description">
-                        Una muestra de mi energía. Nuevos mixes actualizados constantemente.
+                        Sígueme en <strong>@DjBobRusso</strong> · Clips, reels, sets en directo y las últimas novedades.
                     </p>
                 </div>
                 <div class="mix-grid">
@@ -247,7 +214,7 @@
             </div>
         </section>
 
-        <section class="section" id="eventos">
+        <section class="section section-alt" id="eventos">
             <div class="container">
                 <div class="section-header fade-in">
                     <span class="section-label">Eventos</span>
