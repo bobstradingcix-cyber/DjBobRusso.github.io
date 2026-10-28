@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Bob Russo | Más de 15 años de música variada</title>
+    <meta name="description"
+        content="DJ Bob Russo. Más de 15 años pinchando música variada para clubs, bodas, eventos privados y festivales. Booking directo por WhatsApp.">
+    <meta property="og:title" content="DJ Bob Russo | Oficial">
+    <meta property="og:description" content="Música variada • +15 años de experiencia • Booking directo">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#050510">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="grain"></div>
+    <div class="cursor"></div>
+    <audio id="bg-audio" preload="auto" autoplay playsinline>
+        <source src="https://api.soundcloud.com/tracks/placeholder/stream?client_id=YOUR_CLIENT_ID" type="audio/mpeg">
+    </audio>
+    <iframe id="sc-hidden" width="0" height="0" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/djbobrusso/dj-bob-russo&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false"></iframe>
+    <script src="https://w.soundcloud.com/player/api.js"></script>
+    <script>
+        (function() {
+            var iframe = document.getElementById('sc-hidden');
+            var widget = SC.Widget(iframe);
+            function play() {
+                try { widget.play(); } catch(e) {}
+            }
+            widget.bind(SC.Widget.Events.READY, play);
+            widget.bind(SC.Widget.Events.PLAY, function(){});
+            document.addEventListener('click', play, { once: true });
+            document.addEventListener('touchstart', play, { once: true });
+            document.addEventListener('keydown', play, { once: true });
+            window.addEventListener('load', play);
+        })();
+    </script>
+
+    <header class="header">
+        <div class="header-container">
+            <a class="logo" href="#inicio">DJ BOB RUSSO</a>
+            <nav class="nav">
+                <a href="#inicio">Inicio</a>
+                <a href="#redes">Redes</a>
+                <a href="#musica">Música</a>
+                <a href="#eventos">Eventos</a>
+                <a href="#booking">Booking</a>
+            </nav>
+            <a class="header-booking" href="https://wa.me/51902380981" target="_blank" rel="noopener">
+                <span>Booking</span>
+                <i class="ti ti-arrow-right"></i>
+            </a>
+            <button class="nav-toggle" aria-label="Menú">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="mobile-nav">
+            <a href="#inicio">Inicio</a>
+            <a href="#redes">Redes</a>
+            <a href="#musica">Música</a>
+            <a href="#eventos">Eventos</a>
+            <a href="#booking">Booking</a>
+            <a class="mobile-booking" href="https://wa.me/51902380981" target="_blank" rel="noopener">WhatsApp Directo</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio">
+            <div class="hero-background">
+                <div class="hero-bg-image"></div>
+                <div class="hero-overlay"></div>
+                <div class="hero-grid"></div>
+            </div>
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-kicker fade-in">
+                        <span class="kicker-dot"></span>
+                        <p>Clubs • Bodas • Eventos Privados • Festivales</p>
+                    </div>
+                    <h1 class="hero-title fade-in">
+                        <span class="hero-title-line">DJ</span>
+                        <span class="hero-title-line hero-title-line-accent">BOB RUSSO</span>
+                    </h1>
+                    <p class="hero-subtitle fade-in">
+                        Más de 15 años creando atmósferas únicas con música variada. 
+                        Transiciones precisas, lectura de pista y selección cuidada al detalle.
+                    </p>
+                    <div class="hero-actions fade-in">
+                        <a class="btn btn-primary" href="https://wa.me/51902380981" target="_blank" rel="noopener">
+                            <i class="ti ti-brand-whatsapp"></i>
+                            <span>+51 902 380 981</span>
+                        </a>
+                        <a class="btn btn-secondary" href="#musica">
+                            <span>Escuchar sets</span>
+                            <i class="ti ti-player-play"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-scroll fade-in">
+                    <span>Scroll</span>
+                    <div class="scroll-indicator"></div>
+                </div>
+            </div>
+            <div class="hero-bottom-bar">
+                <div class="hero-bottom-inner">
+                    <div class="hero-social-mini">
+                        <span class="hero-social-label">Redes sociales</span>
+                        <div class="hero-social-links">
+                            <a href="https://wa.me/51902380981" target="_blank" rel="noopener" aria-label="WhatsApp +51 902 380 981"><i class="ti ti-brand-whatsapp"></i></a>
+                            <a href="https://instagram.com/DjBobRusso" target="_blank" rel="noopener" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+                            <a href="https://tiktok.com/@DjBobRusso" target="_blank" rel="noopener" aria-label="TikTok"><i class="ti ti-brand-tiktok"></i></a>
+                            <a href="https://youtube.com/@DjBobRusso" target="_blank" rel="noopener" aria-label="YouTube"><i class="ti ti-brand-youtube"></i></a>
+                            <a href="https://soundcloud.com/DjBobRusso" target="_blank" rel="noopener" aria-label="SoundCloud"><i class="ti ti-brand-soundcloud"></i></a>
+                            <a href="https://mixcloud.com/DjBobRusso" target="_blank" rel="noopener" aria-label="Mixcloud"><i class="ti ti-cloud"></i></a>
+                            <a href="https://facebook.com/DjBobRusso" target="_blank" rel="noopener" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></a>
+                        </div>
+                    </div>
+                    <div class="hero-follow-text">
+                        <span>Sígueme en <strong>@DjBobRusso</strong></span>
+                        <span>Clips, reels, sets en directo y las últimas novedades.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-marquee">
+                <div class="marquee-content">
+                    <span>HOUSE • DISCO • FUNK • R&B • AFRO HOUSE • TECH HOUSE • REGGAETÓN • OPEN FORMAT • HOUSE • DISCO • FUNK • R&B • AFRO HOUSE • TECH HOUSE • REGGAETÓN • OPEN FORMAT •</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="musica">
+            <div class="container">
+                <div class="section-header split-header fade-in">
+                    <div>
+                        <span class="section-label">Música</span>
+                        <h2 class="section-title">Escucha mis sets</h2>
+                    </div>
+                    <p class="section-description">
+                        Sígueme en <strong>@DjBobRusso</strong> · Clips, reels, sets en directo y las últimas novedades.
+                    </p>
+                </div>
+                <div class="mix-grid">
+                    <article class="mix-card fade-in">
+                        <div class="mix-header">
+                            <span class="mix-tag">Club Vibe</span>
+                            <span class="mix-name">Afterdark Grooves</span>
+                        </div>
+                        <h3 class="mix-title">House • Disco • Edits</h3>
+                        <p class="mix-description">
+                            Groove profundo para las horas más intensas de la noche.
+                        </p>
+                        <div class="mix-embed">
+                            <iframe title="DJ Bob Russo - SoundCloud Mix" width="100%" height="166" scrolling="no" frameborder="no"
+                                allow="autoplay"
+                                src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/djbobrusso/dj-bob-russo&color=%2300e0ff&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
+                        </div>
+                        <a class="mix-link" href="https://soundcloud.com/djbobrusso/dj-bob-russo" target="_blank" rel="noopener">
+                            <span>Ver en SoundCloud</span>
+                            <i class="ti ti-external-link"></i>
+                        </a>
+                    </article>
+                    <article class="mix-card fade-in">
+                        <div class="mix-header">
+                            <span class="mix-tag">Open Format</span>
+                            <span class="mix-name">Sunset Warm Up</span>
+                        </div>
+                        <h3 class="mix-title">Funk • Soul • R&B • Disco</h3>
+                        <p class="mix-description">
+                            Elegante y versátil, ideal para cócteles y eventos con clase.
+                        </p>
+                        <div class="mix-embed">
+                            <iframe title="Mixcloud Mix" width="100%" height="120" frameborder="0"
+                                allow="encrypted-media; fullscreen; autoplay; idle-detection; speaker-selection; web-share;"
+                                src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=%2Fplaceholder%2F"></iframe>
+                        </div>
+                        <a class="mix-link" href="https://mixcloud.com/DjBobRusso" target="_blank" rel="noopener">
+                            <span>Ver en Mixcloud</span>
+                            <i class="ti ti-external-link"></i>
+                        </a>
+                    </article>
+                    <article class="mix-card fade-in">
+                        <div class="mix-header">
+                            <span class="mix-tag">Peak Time</span>
+                            <span class="mix-name">Peak Energy</span>
+                        </div>
+                        <h3 class="mix-title">Afro House • Tech House • Edits</h3>
+                        <p class="mix-description">
+                            Energía pura para llevar la pista al momento cumbre.
+                        </p>
+                        <div class="mix-embed">
+                            <iframe title="HearThis Mix" width="100%" height="150" scrolling="no" frameborder="no"
+                                src="https://hearthis.at/embed/placeholder/transparent/?hcolor=&color=&style=2&block_size=2&block_space=1&background=1&waveform=0&cover=0&autoplay=0&css="></iframe>
+                        </div>
+                        <a class="mix-link" href="https://hearthis.at/" target="_blank" rel="noopener">
+                            <span>Ver en HearThis</span>
+                            <i class="ti ti-external-link"></i>
+                        </a>
+                    </article>
+                </div>
+                <div class="follow-cta fade-in">
+                    <p>Sigue <a href="https://instagram.com/DjBobRusso" target="_blank" rel="noopener">@DjBobRusso</a> para los últimos sets</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt" id="eventos">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <span class="section-label">Eventos</span>
+                    <h2 class="section-title">Agenda y disponibilidad</h2>
+                    <p class="section-description">
+                        Booking abierto para clubs, bodas, eventos privados, corporativos y festivales.
+                    </p>
+                </div>
+                <div class="event-card fade-in">
+                    <div class="event-main">
+                        <div class="event-info">
+                            <span class="event-status">Booking abierto</span>
+                            <h3 class="event-title">Disponible para tu evento</h3>
+                            <p class="event-desc">
+                                Música variada 100% adaptada al espacio, público, horario y atmósfera que busques.
+                            </p>
+                        </div>
+                        <div class="event-meta">
+                            <div class="event-meta-item">
+                                <i class="ti ti-map-pin"></i>
+                                <span>Nacional / Internacional</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="event-cta" href="#booking">
+                        <span>Consultar disponibilidad</span>
+                        <i class="ti ti-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt" id="booking">
+            <div class="container booking-layout">
+                <div class="booking-content fade-in">
+                    <span class="section-label">Booking</span>
+                    <h2 class="section-title">¿Listo para elevar tu evento?</h2>
+                    <p class="booking-lead">
+                        Cuéntame los detalles de tu evento y lo preparo a medida. Respuesta rápida y directa.
+                    </p>
+                    <ul class="booking-list">
+                        <li>
+                            <i class="ti ti-check"></i>
+                            <span>Selección musical 100% personalizada</span>
+                        </li>
+                        <li>
+                            <i class="ti ti-check"></i>
+                            <span>Adaptado al espacio, horario y público</span>
+                        </li>
+                        <li>
+                            <i class="ti ti-check"></i>
+                            <span>+15 años garantizando ambiente y energía</span>
+                        </li>
+                        <li>
+                            <i class="ti ti-check"></i>
+                            <span>Profesional, puntual y con gran presencia</span>
+                        </li>
+                    </ul>
+                    <div class="booking-direct">
+                        <span class="booking-direct-label">Contacto directo</span>
+                        <div class="booking-direct-links">
+                            <a href="https://instagram.com/DjBobRusso" target="_blank" rel="noopener">
+                                <i class="ti ti-brand-instagram"></i>
+                                <span>@DjBobRusso</span>
+                            </a>
+                            <a href="https://tiktok.com/@DjBobRusso" target="_blank" rel="noopener">
+                                <i class="ti ti-brand-tiktok"></i>
+                                <span>@DjBobRusso</span>
+                            </a>
+                            <a href="https://wa.me/51902380981" target="_blank" rel="noopener">
+                                <i class="ti ti-brand-whatsapp"></i>
+                                <span>+51 902 380 981</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <form class="booking-form fade-in">
+                    <div class="form-header">
+                        <h3>Solicitud de booking</h3>
+                        <p>Rellena el formulario y te respondo lo antes posible</p>
+                    </div>
+                    <div class="form-grid">
+                        <label class="form-field">
+                            <span>Nombre / Empresa</span>
+                            <input type="text" name="nombre" placeholder="Tu nombre o razón social" required>
+                        </label>
+                        <label class="form-field">
+                            <span>Contacto</span>
+                            <input type="text" name="contacto" placeholder="Teléfono, WhatsApp o Instagram" required>
+                        </label>
+                        <label class="form-field">
+                            <span>Fecha del evento</span>
+                            <input type="date" name="fecha">
+                        </label>
+                        <label class="form-field">
+                            <span>Tipo de evento</span>
+                            <select name="tipo">
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="club">Club / Sala</option>
+                                <option value="boda">Boda</option>
+                                <option value="privado">Evento privado</option>
+                                <option value="corporativo">Corporativo</option>
+                                <option value="festival">Festival</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </label>
+                        <label class="form-field form-field-full">
+                            <span>Ubicación</span>
+                            <input type="text" name="ubicacion" placeholder="Ciudad, venue o dirección">
+                        </label>
+                        <label class="form-field form-field-full">
+                            <span>Detalles del evento</span>
+                            <textarea name="detalles" rows="5" placeholder="Horario, duración, público esperado, música preferida..."></textarea>
+                        </label>
+                    </div>
+                    <button class="btn btn-primary btn-full" type="submit">
+                        <span>Enviar solicitud</span>
+                        <i class="ti ti-send"></i>
+                    </button>
+                    <p class="form-note">
+                        También puedes escribir directamente por <a href="https://wa.me/51902380981" target="_blank" rel="noopener">WhatsApp</a>
+                    </p>
+                </form>
+            </div>
+        </section>
+
+        <section class="section" id="redes">
+            <div class="container">
+                <div class="section-header center fade-in">
+                    <span class="section-label">Redes sociales</span>
+                    <h2 class="section-title">Sígueme en @DjBobRusso</h2>
+                    <p class="section-description">
+                        Clips, reels, sets en directo y las últimas novedades.
+                    </p>
+                </div>
+                <div class="social-grid">
+                    <a class="social-card social-card-large fade-in" href="https://instagram.com/DjBobRusso" target="_blank" rel="noopener">
+                        <div class="social-content">
+                            <i class="ti ti-brand-instagram social-icon-large"></i>
+                            <div>
+                                <span class="social-name">Instagram</span>
+                                <span class="social-handle">@DjBobRusso</span>
+                            </div>
+                            <i class="ti ti-arrow-up-right social-arrow"></i>
+                        </div>
+                    </a>
+                    <a class="social-card social-card-large fade-in" href="https://tiktok.com/@DjBobRusso" target="_blank" rel="noopener">
+                        <div class="social-content">
+                            <i class="ti ti-brand-tiktok social-icon-large"></i>
+                            <div>
+                                <span class="social-name">TikTok</span>
+                                <span class="social-handle">@DjBobRusso</span>
+                            </div>
+                            <i class="ti ti-arrow-up-right social-arrow"></i>
+                        </div>
+                    </a>
+                    <a class="social-card social-card-large fade-in" href="https://youtube.com/@DjBobRusso" target="_blank" rel="noopener">
+                        <div class="social-content">
+                            <i class="ti ti-brand-youtube social-icon-large"></i>
+                            <div>
+                                <span class="social-name">YouTube</span>
+                                <span class="social-handle">@DjBobRusso</span>
+                            </div>
+                            <i class="ti ti-arrow-up-right social-arrow"></i>
+                        </div>
+                    </a>
+                    <a class="social-card social-card-large fade-in" href="https://soundcloud.com/DjBobRusso" target="_blank" rel="noopener">
+                        <div class="social-content">
+                            <i class="ti ti-brand-soundcloud social-icon-large"></i>
+                            <div>
+                                <span class="social-name">SoundCloud</span>
+                                <span class="social-handle">@DjBobRusso</span>
+                            </div>
+                            <i class="ti ti-arrow-up-right social-arrow"></i>
+                        </div>
+                    </a>
+                    <a class="social-card social-card-large fade-in" href="https://mixcloud.com/DjBobRusso" target="_blank" rel="noopener">
+                        <div class="social-content">
+                            <i class="ti ti-cloud social-icon-large"></i>
+                            <div>
+                                <span class="social-name">Mixcloud</span>
+                                <span class="social-handle">@DjBobRusso</span>
+                            </div>
+                            <i class="ti ti-arrow-up-right social-arrow"></i>
+                        </div>
+                    </a>
+                    <a class="social-card social-card-large fade-in" href="https://facebook.com/DjBobRusso" target="_blank" rel="noopener">
+                        <div class="social-content">
+                            <i class="ti ti-brand-facebook social-icon-large"></i>
+                            <div>
+                                <span class="social-name">Facebook</span>
+                                <span class="social-handle">@DjBobRusso</span>
+                            </div>
+                            <i class="ti ti-arrow-up-right social-arrow"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a class="logo" href="#inicio">DJ BOB RUSSO</a>
+                    <p>DJ con más de 15 años. Música variada. Selección impecable.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <span class="footer-label">Navegación</span>
+                        <a href="#inicio">Inicio</a>
+                        <a href="#sobre-mi">Sobre mí</a>
+                        <a href="#musica">Música</a>
+                        <a href="#eventos">Eventos</a>
+                        <a href="#booking">Booking</a>
+                    </div>
+                    <div class="footer-column">
+                        <span class="footer-label">Booking</span>
+                        <a href="#booking">Solicitar fecha</a>
+                        <a href="https://wa.me/51902380981" target="_blank" rel="noopener">WhatsApp directo</a>
+                        <a href="https://instagram.com/DjBobRusso" target="_blank" rel="noopener">Instagram directo</a>
+                    </div>
+                    <div class="footer-column">
+                        <span class="footer-label">Redes</span>
+                        <a href="https://instagram.com/DjBobRusso" target="_blank" rel="noopener">Instagram</a>
+                        <a href="https://tiktok.com/@DjBobRusso" target="_blank" rel="noopener">TikTok</a>
+                        <a href="https://soundcloud.com/DjBobRusso" target="_blank" rel="noopener">SoundCloud</a>
+                        <a href="https://mixcloud.com/DjBobRusso" target="_blank" rel="noopener">Mixcloud</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="year"></span> DJ Bob Russo. Todos los derechos reservados.</p>
+                <p>Diseñado con atención al detalle</p>
+            </div>
+        </div>
+    </footer>
+
+    <a class="whatsapp-float" href="https://wa.me/51902380981" target="_blank" rel="noopener" aria-label="Escríbeme por WhatsApp al +51 902 380 981">
+        <i class="ti ti-brand-whatsapp"></i>
+        <span>+51 902 380 981</span>
+    </a>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

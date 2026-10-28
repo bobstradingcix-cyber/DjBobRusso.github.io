@@ -10,12 +10,14 @@
     <meta property="og:title" content="DJ Bob Russo | Oficial">
     <meta property="og:description" content="Música variada • +15 años de experiencia • Booking directo">
     <meta property="og:type" content="website">
-    <meta name="theme-color" content="#050510">
+    <meta property="og:image" content="img/hero-bg.jpg">
+    <meta name="theme-color" content="#08090a">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2308090a'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%237ce4ff' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2' fill='%23ff5a2b'/%3E%3C/svg%3E">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@500;600;700;800&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
@@ -23,101 +25,104 @@
 </head>
 
 <body>
-    <div class="grain"></div>
-    <div class="cursor"></div>
-    <audio id="bg-audio" preload="auto" autoplay playsinline>
-        <source src="https://api.soundcloud.com/tracks/placeholder/stream?client_id=YOUR_CLIENT_ID" type="audio/mpeg">
-    </audio>
-    <iframe id="sc-hidden" width="0" height="0" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/djbobrusso/dj-bob-russo&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false"></iframe>
-    <script src="https://w.soundcloud.com/player/api.js"></script>
-    <script>
-        (function() {
-            var iframe = document.getElementById('sc-hidden');
-            var widget = SC.Widget(iframe);
-            function play() {
-                try { widget.play(); } catch(e) {}
-            }
-            widget.bind(SC.Widget.Events.READY, play);
-            widget.bind(SC.Widget.Events.PLAY, function(){});
-            document.addEventListener('click', play, { once: true });
-            document.addEventListener('touchstart', play, { once: true });
-            document.addEventListener('keydown', play, { once: true });
-            window.addEventListener('load', play);
-        })();
-    </script>
+    <a class="skip-link" href="#inicio">Saltar al contenido</a>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="spotlight" aria-hidden="true"></div>
+    <div class="scroll-progress" aria-hidden="true"><i></i></div>
 
-    <header class="header">
+    <audio id="bg-audio" preload="none"></audio>
+    <iframe id="sc-hidden" title="Reproductor de DJ Bob Russo" width="0" height="0" scrolling="no" frameborder="no"
+        aria-hidden="true"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/djbobrusso/dj-bob-russo&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false"></iframe>
+
+    <header class="header" id="top">
         <div class="header-container">
-            <a class="logo" href="#inicio">DJ BOB RUSSO</a>
-            <nav class="nav">
-                <a href="#inicio">Inicio</a>
-                <a href="#redes">Redes</a>
-                <a href="#musica">Música</a>
-                <a href="#eventos">Eventos</a>
-                <a href="#booking">Booking</a>
-            </nav>
-            <a class="header-booking" href="https://wa.me/51902380981" target="_blank" rel="noopener">
-                <span>Booking</span>
-                <i class="ti ti-arrow-right"></i>
+            <a class="logo" href="#inicio" aria-label="DJ Bob Russo, ir al inicio">
+                <span class="logo-mark" aria-hidden="true"></span>
+                <span class="logo-text">DJ BOB RUSSO</span>
             </a>
-            <button class="nav-toggle" aria-label="Menú">
-                <span></span>
-                <span></span>
-            </button>
+            <nav class="nav" aria-label="Navegación principal">
+                <a href="#sobre-mi"><i class="nav-index">01</i>Sobre mí</a>
+                <a href="#musica"><i class="nav-index">02</i>Música</a>
+                <a href="#generos"><i class="nav-index">03</i>Géneros</a>
+                <a href="#eventos"><i class="nav-index">04</i>Eventos</a>
+                <a href="#booking"><i class="nav-index">05</i>Booking</a>
+            </nav>
+            <div class="header-actions">
+                <button class="sound-toggle" type="button" aria-pressed="false" aria-label="Activar el sonido en directo">
+                    <span class="eq" aria-hidden="true"><b></b><b></b><b></b><b></b></span>
+                    <span class="sound-label">Suena</span>
+                </button>
+                <a class="header-booking" href="https://wa.me/51902380981" target="_blank" rel="noopener">
+                    <span>Booking</span>
+                    <i class="ti ti-arrow-up-right" aria-hidden="true"></i>
+                </a>
+                <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-movil">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
-        <div class="mobile-nav">
-            <a href="#inicio">Inicio</a>
-            <a href="#redes">Redes</a>
+        <nav class="mobile-nav" id="menu-movil" aria-label="Navegación móvil">
+            <a href="#sobre-mi">Sobre mí</a>
             <a href="#musica">Música</a>
+            <a href="#generos">Géneros</a>
             <a href="#eventos">Eventos</a>
             <a href="#booking">Booking</a>
-            <a class="mobile-booking" href="https://wa.me/51902380981" target="_blank" rel="noopener">WhatsApp Directo</a>
-        </div>
+            <a href="#redes">Redes</a>
+            <a class="mobile-booking" href="https://wa.me/51902380981" target="_blank" rel="noopener">WhatsApp directo · +51 902 380 981</a>
+        </nav>
     </header>
 
     <main>
         <section class="hero" id="inicio">
-            <div class="hero-background">
+            <div class="hero-background" aria-hidden="true">
                 <div class="hero-bg-image"></div>
-                <div class="hero-overlay"></div>
+                <div class="hero-duo"></div>
                 <div class="hero-grid"></div>
             </div>
+
+            <div class="hero-rail" aria-hidden="true">
+                <span class="rail-text">Scroll</span>
+                <span class="rail-line"></span>
+            </div>
+
             <div class="hero-container">
-                <div class="hero-content">
-                    <div class="hero-kicker fade-in">
-                        <span class="kicker-dot"></span>
-                        <p>Clubs • Bodas • Eventos Privados • Festivales</p>
-                    </div>
-                    <h1 class="hero-title fade-in">
-                        <span class="hero-title-line">DJ</span>
-                        <span class="hero-title-line hero-title-line-accent">BOB RUSSO</span>
-                    </h1>
-                    <p class="hero-subtitle fade-in">
-                        Más de 15 años creando atmósferas únicas con música variada. 
-                        Transiciones precisas, lectura de pista y selección cuidada al detalle.
+                <div class="hero-kicker">
+                    <span class="kicker-dot"></span>
+                    <p>Clubs · Bodas · Eventos privados · Festivales</p>
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="line"><span class="line-inner">DJ</span></span>
+                    <span class="line"><span class="line-inner hero-title-outline">BOB</span></span>
+                    <span class="line"><span class="line-inner">RUSSO</span></span>
+                </h1>
+
+                <div class="hero-lower">
+                    <p class="hero-subtitle">
+                        Más de <em>15 años</em> creando atmósferas únicas con música variada.
+                        Transiciones precisas, lectura de pista y una selección cuidada al detalle.
                     </p>
-                    <div class="hero-actions fade-in">
-                        <a class="btn btn-primary" href="https://wa.me/51902380981" target="_blank" rel="noopener">
-                            <i class="ti ti-brand-whatsapp"></i>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="https://wa.me/51902380981" target="_blank" rel="noopener" data-magnetic>
+                            <i class="ti ti-brand-whatsapp" aria-hidden="true"></i>
                             <span>+51 902 380 981</span>
                         </a>
-                        <a class="btn btn-secondary" href="#musica">
+                        <a class="btn btn-ghost" href="#musica" data-magnetic>
                             <span>Escuchar sets</span>
-                            <i class="ti ti-player-play"></i>
+                            <i class="ti ti-player-play" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
-                <div class="hero-scroll fade-in">
-                    <span>Scroll</span>
-                    <div class="scroll-indicator"></div>
-                </div>
             </div>
+
             <div class="hero-bottom-bar">
                 <div class="hero-bottom-inner">
                     <div class="hero-social-mini">
-                        <span class="hero-social-label">Redes sociales</span>
+                        <span class="hero-social-label">Redes</span>
                         <div class="hero-social-links">
-                            <a href="https://wa.me/51902380981" target="_blank" rel="noopener" aria-label="WhatsApp +51 902 380 981"><i class="ti ti-brand-whatsapp"></i></a>
+                            <a href="https://wa.me/51902380981" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="ti ti-brand-whatsapp"></i></a>
                             <a href="https://instagram.com/DjBobRusso" target="_blank" rel="noopener" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
                             <a href="https://tiktok.com/@DjBobRusso" target="_blank" rel="noopener" aria-label="TikTok"><i class="ti ti-brand-tiktok"></i></a>
                             <a href="https://youtube.com/@DjBobRusso" target="_blank" rel="noopener" aria-label="YouTube"><i class="ti ti-brand-youtube"></i></a>
@@ -128,105 +133,223 @@
                     </div>
                     <div class="hero-follow-text">
                         <span>Sígueme en <strong>@DjBobRusso</strong></span>
-                        <span>Clips, reels, sets en directo y las últimas novedades.</span>
+                        <span class="hero-follow-sub">Clips, reels, sets en directo y novedades.</span>
                     </div>
                 </div>
             </div>
-            <div class="hero-marquee">
-                <div class="marquee-content">
-                    <span>HOUSE • DISCO • FUNK • R&B • AFRO HOUSE • TECH HOUSE • REGGAETÓN • OPEN FORMAT • HOUSE • DISCO • FUNK • R&B • AFRO HOUSE • TECH HOUSE • REGGAETÓN • OPEN FORMAT •</span>
+
+            <div class="hero-marquee" aria-hidden="true">
+                <div class="marquee-track">
+                    <span>House · Disco · Funk · R&amp;B · Afro House · Tech House · Reggaetón · Open Format ·</span>
+                    <span>House · Disco · Funk · R&amp;B · Afro House · Tech House · Reggaetón · Open Format ·</span>
                 </div>
             </div>
         </section>
 
-        <section class="section" id="musica">
+        <section class="section" id="sobre-mi">
+            <div class="container about-layout">
+                <div class="about-sticky">
+                    <span class="section-index">01</span>
+                    <h2 class="section-title reveal-lines">
+                        <span class="line"><span class="line-inner">Detrás</span></span>
+                        <span class="line"><span class="line-inner">de la mesa</span></span>
+                    </h2>
+                    <div class="about-portrait" aria-hidden="true">
+                        <div class="portrait-img"></div>
+                        <div class="portrait-badge">
+                            <span class="portrait-dot"></span>
+                            <span>Disponible · 2026</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-body">
+                    <p class="lead">
+                        Empecé pinchando en salas pequeñas y hoy lleno pistas de clubs, bodas y festivales.
+                        Lo que no cambió: leer una pista y poner exactamente el tema que esa gente necesita escuchar.
+                    </p>
+                    <p class="about-text">
+                        Trabajo en formato abierto. No vengo con una lista fija, vengo con una colección enorme y
+                        el criterio para usarla. Antes de cada evento revisamos el público, el horario, el espacio
+                        y el momento exacto en el que quieres que la noche explote.
+                    </p>
+                    <ul class="stats" data-stagger>
+                        <li class="stat">
+                            <span class="stat-num" data-count="15" data-suffix="+">15+</span>
+                            <span class="stat-label">Años pinchando</span>
+                        </li>
+                        <li class="stat">
+                            <span class="stat-num" data-count="900" data-suffix="+">900+</span>
+                            <span class="stat-label">Eventos en directo</span>
+                        </li>
+                        <li class="stat">
+                            <span class="stat-num" data-count="40" data-suffix="+">40+</span>
+                            <span class="stat-label">Ciudades y venues</span>
+                        </li>
+                        <li class="stat">
+                            <span class="stat-num" data-count="8" data-suffix="">8</span>
+                            <span class="stat-label">Géneros en rotación</span>
+                        </li>
+                    </ul>
+                    <div class="about-tags" data-stagger>
+                        <span class="tag">Lectura de pista</span>
+                        <span class="tag">Transiciones limpias</span>
+                        <span class="tag">Equipos propios</span>
+                        <span class="tag">Sets a medida</span>
+                        <span class="tag">Puntualidad</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt" id="musica">
             <div class="container">
-                <div class="section-header split-header fade-in">
+                <div class="section-header split-header">
                     <div>
-                        <span class="section-label">Música</span>
-                        <h2 class="section-title">Escucha mis sets</h2>
+                        <span class="section-index">02</span>
+                        <h2 class="section-title reveal-lines">
+                            <span class="line"><span class="line-inner">Escucha</span></span>
+                            <span class="line"><span class="line-inner">mis sets</span></span>
+                        </h2>
                     </div>
                     <p class="section-description">
-                        Sígueme en <strong>@DjBobRusso</strong> · Clips, reels, sets en directo y las últimas novedades.
+                        Tres momentos distintos, tres formas de entender la noche.
+                        Sígueme en <strong>@DjBobRusso</strong> para lo que va saliendo.
                     </p>
                 </div>
-                <div class="mix-grid">
-                    <article class="mix-card fade-in">
+                <div class="mix-grid" data-stagger>
+                    <article class="mix-card mix-card-featured">
                         <div class="mix-header">
                             <span class="mix-tag">Club Vibe</span>
                             <span class="mix-name">Afterdark Grooves</span>
                         </div>
-                        <h3 class="mix-title">House • Disco • Edits</h3>
+                        <h3 class="mix-title">House · Disco · Edits</h3>
                         <p class="mix-description">
                             Groove profundo para las horas más intensas de la noche.
                         </p>
+                        <div class="waveform" aria-hidden="true"></div>
                         <div class="mix-embed">
                             <iframe title="DJ Bob Russo - SoundCloud Mix" width="100%" height="166" scrolling="no" frameborder="no"
-                                allow="autoplay"
-                                src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/djbobrusso/dj-bob-russo&color=%2300e0ff&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
+                                loading="lazy" allow="autoplay"
+                                src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/djbobrusso/dj-bob-russo&color=%237ce4ff&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
                         </div>
                         <a class="mix-link" href="https://soundcloud.com/djbobrusso/dj-bob-russo" target="_blank" rel="noopener">
                             <span>Ver en SoundCloud</span>
-                            <i class="ti ti-external-link"></i>
+                            <i class="ti ti-arrow-up-right" aria-hidden="true"></i>
                         </a>
                     </article>
-                    <article class="mix-card fade-in">
+                    <article class="mix-card">
                         <div class="mix-header">
                             <span class="mix-tag">Open Format</span>
                             <span class="mix-name">Sunset Warm Up</span>
                         </div>
-                        <h3 class="mix-title">Funk • Soul • R&B • Disco</h3>
+                        <h3 class="mix-title">Funk · Soul · R&amp;B · Disco</h3>
                         <p class="mix-description">
                             Elegante y versátil, ideal para cócteles y eventos con clase.
                         </p>
                         <div class="mix-embed">
-                            <iframe title="Mixcloud Mix" width="100%" height="120" frameborder="0"
-                                allow="encrypted-media; fullscreen; autoplay; idle-detection; speaker-selection; web-share;"
-                                src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=%2Fplaceholder%2F"></iframe>
+                            <iframe title="Mixcloud Mix" width="100%" height="120" frameborder="0" loading="lazy"
+                                allow="autoplay; fullscreen; encrypted-media"
+                                src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=0&feed=%2Fplaceholder%2F"></iframe>
                         </div>
                         <a class="mix-link" href="https://mixcloud.com/DjBobRusso" target="_blank" rel="noopener">
                             <span>Ver en Mixcloud</span>
-                            <i class="ti ti-external-link"></i>
+                            <i class="ti ti-arrow-up-right" aria-hidden="true"></i>
                         </a>
                     </article>
-                    <article class="mix-card fade-in">
+                    <article class="mix-card">
                         <div class="mix-header">
                             <span class="mix-tag">Peak Time</span>
                             <span class="mix-name">Peak Energy</span>
                         </div>
-                        <h3 class="mix-title">Afro House • Tech House • Edits</h3>
+                        <h3 class="mix-title">Afro House · Tech House</h3>
                         <p class="mix-description">
                             Energía pura para llevar la pista al momento cumbre.
                         </p>
                         <div class="mix-embed">
-                            <iframe title="HearThis Mix" width="100%" height="150" scrolling="no" frameborder="no"
+                            <iframe title="HearThis Mix" width="100%" height="150" scrolling="no" frameborder="no" loading="lazy"
                                 src="https://hearthis.at/embed/placeholder/transparent/?hcolor=&color=&style=2&block_size=2&block_space=1&background=1&waveform=0&cover=0&autoplay=0&css="></iframe>
                         </div>
                         <a class="mix-link" href="https://hearthis.at/" target="_blank" rel="noopener">
                             <span>Ver en HearThis</span>
-                            <i class="ti ti-external-link"></i>
+                            <i class="ti ti-arrow-up-right" aria-hidden="true"></i>
                         </a>
                     </article>
                 </div>
-                <div class="follow-cta fade-in">
+                <div class="follow-cta">
                     <p>Sigue <a href="https://instagram.com/DjBobRusso" target="_blank" rel="noopener">@DjBobRusso</a> para los últimos sets</p>
                 </div>
             </div>
         </section>
 
+        <section class="section" id="generos">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-index">03</span>
+                    <h2 class="section-title reveal-lines">
+                        <span class="line"><span class="line-inner">Lo que suena</span></span>
+                    </h2>
+                    <p class="section-description">
+                        Formato abierto de verdad: cada género es una herramienta distinta
+                        y la uso según lo que pida la pista.
+                    </p>
+                </div>
+                <ul class="genre-list" data-stagger>
+                    <li class="genre-row">
+                        <span class="genre-num">01</span>
+                        <h3 class="genre-name">House</h3>
+                        <p class="genre-note">Groove, calidez, pista constante</p>
+                        <span class="genre-tempo">124–128 BPM</span>
+                    </li>
+                    <li class="genre-row">
+                        <span class="genre-num">02</span>
+                        <h3 class="genre-name">Disco &amp; Funk</h3>
+                        <p class="genre-note">Brillo, bajo, manos arriba</p>
+                        <span class="genre-tempo">110–120 BPM</span>
+                    </li>
+                    <li class="genre-row">
+                        <span class="genre-num">03</span>
+                        <h3 class="genre-name">Afro House</h3>
+                        <p class="genre-note">Percusión hipnótica, viaje largo</p>
+                        <span class="genre-tempo">118–124 BPM</span>
+                    </li>
+                    <li class="genre-row">
+                        <span class="genre-num">04</span>
+                        <h3 class="genre-name">Tech House</h3>
+                        <p class="genre-note">Corte y precisión, pico de noche</p>
+                        <span class="genre-tempo">126–130 BPM</span>
+                    </li>
+                    <li class="genre-row">
+                        <span class="genre-num">05</span>
+                        <h3 class="genre-name">R&amp;B &amp; Reggaetón</h3>
+                        <p class="genre-note">Cante colectivo y cambio de ritmo</p>
+                        <span class="genre-tempo">90–100 BPM</span>
+                    </li>
+                    <li class="genre-row">
+                        <span class="genre-num">06</span>
+                        <h3 class="genre-name">Open Format</h3>
+                        <p class="genre-note">Bodas y corporativos: todo el mundo dentro</p>
+                        <span class="genre-tempo">A demanda</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
         <section class="section section-alt" id="eventos">
             <div class="container">
-                <div class="section-header fade-in">
-                    <span class="section-label">Eventos</span>
-                    <h2 class="section-title">Agenda y disponibilidad</h2>
+                <div class="section-header">
+                    <span class="section-index">04</span>
+                    <h2 class="section-title reveal-lines">
+                        <span class="line"><span class="line-inner">Agenda y</span></span>
+                        <span class="line"><span class="line-inner">disponibilidad</span></span>
+                    </h2>
                     <p class="section-description">
                         Booking abierto para clubs, bodas, eventos privados, corporativos y festivales.
                     </p>
                 </div>
-                <div class="event-card fade-in">
+                <div class="event-card">
                     <div class="event-main">
                         <div class="event-info">
-                            <span class="event-status">Booking abierto</span>
+                            <span class="event-status"><span class="status-dot"></span>Booking abierto</span>
                             <h3 class="event-title">Disponible para tu evento</h3>
                             <p class="event-desc">
                                 Música variada 100% adaptada al espacio, público, horario y atmósfera que busques.
@@ -234,76 +357,87 @@
                         </div>
                         <div class="event-meta">
                             <div class="event-meta-item">
-                                <i class="ti ti-map-pin"></i>
+                                <i class="ti ti-map-pin" aria-hidden="true"></i>
                                 <span>Nacional / Internacional</span>
+                            </div>
+                            <div class="event-meta-item">
+                                <i class="ti ti-clock" aria-hidden="true"></i>
+                                <span>Sets de 1 a 6 horas</span>
+                            </div>
+                            <div class="event-meta-item">
+                                <i class="ti ti-equalizer" aria-hidden="true"></i>
+                                <span>Equipo de sonido e luces</span>
                             </div>
                         </div>
                     </div>
-                    <a class="event-cta" href="#booking">
+                    <a class="event-cta" href="#booking" data-magnetic>
                         <span>Consultar disponibilidad</span>
-                        <i class="ti ti-arrow-right"></i>
+                        <i class="ti ti-arrow-right" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
         </section>
 
-        <section class="section section-alt" id="booking">
+        <section class="section" id="booking">
             <div class="container booking-layout">
-                <div class="booking-content fade-in">
-                    <span class="section-label">Booking</span>
-                    <h2 class="section-title">¿Listo para elevar tu evento?</h2>
+                <div class="booking-content">
+                    <span class="section-index">05</span>
+                    <h2 class="section-title reveal-lines">
+                        <span class="line"><span class="line-inner">¿Listo para</span></span>
+                        <span class="line"><span class="line-inner">elevar tu evento?</span></span>
+                    </h2>
                     <p class="booking-lead">
-                        Cuéntame los detalles de tu evento y lo preparo a medida. Respuesta rápida y directa.
+                        Cuéntame los detalles y lo preparo a medida. Respuesta rápida y directa.
                     </p>
-                    <ul class="booking-list">
+                    <ul class="booking-list" data-stagger>
                         <li>
-                            <i class="ti ti-check"></i>
+                            <i class="ti ti-check" aria-hidden="true"></i>
                             <span>Selección musical 100% personalizada</span>
                         </li>
                         <li>
-                            <i class="ti ti-check"></i>
+                            <i class="ti ti-check" aria-hidden="true"></i>
                             <span>Adaptado al espacio, horario y público</span>
                         </li>
                         <li>
-                            <i class="ti ti-check"></i>
+                            <i class="ti ti-check" aria-hidden="true"></i>
                             <span>+15 años garantizando ambiente y energía</span>
                         </li>
                         <li>
-                            <i class="ti ti-check"></i>
+                            <i class="ti ti-check" aria-hidden="true"></i>
                             <span>Profesional, puntual y con gran presencia</span>
                         </li>
                     </ul>
                     <div class="booking-direct">
                         <span class="booking-direct-label">Contacto directo</span>
                         <div class="booking-direct-links">
+                            <a href="https://wa.me/51902380981" target="_blank" rel="noopener">
+                                <i class="ti ti-brand-whatsapp" aria-hidden="true"></i>
+                                <span>+51 902 380 981</span>
+                            </a>
                             <a href="https://instagram.com/DjBobRusso" target="_blank" rel="noopener">
-                                <i class="ti ti-brand-instagram"></i>
+                                <i class="ti ti-brand-instagram" aria-hidden="true"></i>
                                 <span>@DjBobRusso</span>
                             </a>
                             <a href="https://tiktok.com/@DjBobRusso" target="_blank" rel="noopener">
-                                <i class="ti ti-brand-tiktok"></i>
+                                <i class="ti ti-brand-tiktok" aria-hidden="true"></i>
                                 <span>@DjBobRusso</span>
-                            </a>
-                            <a href="https://wa.me/51902380981" target="_blank" rel="noopener">
-                                <i class="ti ti-brand-whatsapp"></i>
-                                <span>+51 902 380 981</span>
                             </a>
                         </div>
                     </div>
                 </div>
-                <form class="booking-form fade-in">
+                <form class="booking-form">
                     <div class="form-header">
                         <h3>Solicitud de booking</h3>
-                        <p>Rellena el formulario y te respondo lo antes posible</p>
+                        <p>Rellena y te respondo por WhatsApp en el día.</p>
                     </div>
                     <div class="form-grid">
                         <label class="form-field">
                             <span>Nombre / Empresa</span>
-                            <input type="text" name="nombre" placeholder="Tu nombre o razón social" required>
+                            <input type="text" name="nombre" placeholder="Tu nombre o razón social" autocomplete="name" required>
                         </label>
                         <label class="form-field">
                             <span>Contacto</span>
-                            <input type="text" name="contacto" placeholder="Teléfono, WhatsApp o Instagram" required>
+                            <input type="text" name="contacto" placeholder="Teléfono, WhatsApp o Instagram" autocomplete="tel" required>
                         </label>
                         <label class="form-field">
                             <span>Fecha del evento</span>
@@ -323,92 +457,96 @@
                         </label>
                         <label class="form-field form-field-full">
                             <span>Ubicación</span>
-                            <input type="text" name="ubicacion" placeholder="Ciudad, venue o dirección">
+                            <input type="text" name="ubicacion" placeholder="Ciudad, venue o dirección" autocomplete="address-level2">
                         </label>
                         <label class="form-field form-field-full">
                             <span>Detalles del evento</span>
                             <textarea name="detalles" rows="5" placeholder="Horario, duración, público esperado, música preferida..."></textarea>
                         </label>
                     </div>
-                    <button class="btn btn-primary btn-full" type="submit">
+                    <button class="btn btn-primary btn-full" type="submit" data-magnetic>
                         <span>Enviar solicitud</span>
-                        <i class="ti ti-send"></i>
+                        <i class="ti ti-arrow-up-right" aria-hidden="true"></i>
                     </button>
-                    <p class="form-note">
-                        También puedes escribir directamente por <a href="https://wa.me/51902380981" target="_blank" rel="noopener">WhatsApp</a>
+                    <p class="form-note" role="status">
+                        Se abrirá WhatsApp con tu solicitud ya escrita. También puedes escribir
+                        <a href="https://wa.me/51902380981" target="_blank" rel="noopener">directamente</a>.
                     </p>
                 </form>
             </div>
         </section>
 
-        <section class="section" id="redes">
+        <section class="section section-alt" id="redes">
             <div class="container">
-                <div class="section-header center fade-in">
-                    <span class="section-label">Redes sociales</span>
-                    <h2 class="section-title">Sígueme en @DjBobRusso</h2>
+                <div class="section-header center">
+                    <span class="section-index">06</span>
+                    <h2 class="section-title reveal-lines">
+                        <span class="line"><span class="line-inner">Sígueme en</span></span>
+                        <span class="line"><span class="line-inner">@DjBobRusso</span></span>
+                    </h2>
                     <p class="section-description">
                         Clips, reels, sets en directo y las últimas novedades.
                     </p>
                 </div>
-                <div class="social-grid">
-                    <a class="social-card social-card-large fade-in" href="https://instagram.com/DjBobRusso" target="_blank" rel="noopener">
+                <div class="social-grid" data-stagger>
+                    <a class="social-card social-card-large" href="https://instagram.com/DjBobRusso" target="_blank" rel="noopener">
                         <div class="social-content">
-                            <i class="ti ti-brand-instagram social-icon-large"></i>
+                            <i class="ti ti-brand-instagram social-icon-large" aria-hidden="true"></i>
                             <div>
                                 <span class="social-name">Instagram</span>
                                 <span class="social-handle">@DjBobRusso</span>
                             </div>
-                            <i class="ti ti-arrow-up-right social-arrow"></i>
+                            <i class="ti ti-arrow-up-right social-arrow" aria-hidden="true"></i>
                         </div>
                     </a>
-                    <a class="social-card social-card-large fade-in" href="https://tiktok.com/@DjBobRusso" target="_blank" rel="noopener">
+                    <a class="social-card social-card-large" href="https://tiktok.com/@DjBobRusso" target="_blank" rel="noopener">
                         <div class="social-content">
-                            <i class="ti ti-brand-tiktok social-icon-large"></i>
+                            <i class="ti ti-brand-tiktok social-icon-large" aria-hidden="true"></i>
                             <div>
                                 <span class="social-name">TikTok</span>
                                 <span class="social-handle">@DjBobRusso</span>
                             </div>
-                            <i class="ti ti-arrow-up-right social-arrow"></i>
+                            <i class="ti ti-arrow-up-right social-arrow" aria-hidden="true"></i>
                         </div>
                     </a>
-                    <a class="social-card social-card-large fade-in" href="https://youtube.com/@DjBobRusso" target="_blank" rel="noopener">
+                    <a class="social-card social-card-large" href="https://youtube.com/@DjBobRusso" target="_blank" rel="noopener">
                         <div class="social-content">
-                            <i class="ti ti-brand-youtube social-icon-large"></i>
+                            <i class="ti ti-brand-youtube social-icon-large" aria-hidden="true"></i>
                             <div>
                                 <span class="social-name">YouTube</span>
                                 <span class="social-handle">@DjBobRusso</span>
                             </div>
-                            <i class="ti ti-arrow-up-right social-arrow"></i>
+                            <i class="ti ti-arrow-up-right social-arrow" aria-hidden="true"></i>
                         </div>
                     </a>
-                    <a class="social-card social-card-large fade-in" href="https://soundcloud.com/DjBobRusso" target="_blank" rel="noopener">
+                    <a class="social-card" href="https://soundcloud.com/DjBobRusso" target="_blank" rel="noopener">
                         <div class="social-content">
-                            <i class="ti ti-brand-soundcloud social-icon-large"></i>
+                            <i class="ti ti-brand-soundcloud" aria-hidden="true"></i>
                             <div>
                                 <span class="social-name">SoundCloud</span>
                                 <span class="social-handle">@DjBobRusso</span>
                             </div>
-                            <i class="ti ti-arrow-up-right social-arrow"></i>
+                            <i class="ti ti-arrow-up-right social-arrow" aria-hidden="true"></i>
                         </div>
                     </a>
-                    <a class="social-card social-card-large fade-in" href="https://mixcloud.com/DjBobRusso" target="_blank" rel="noopener">
+                    <a class="social-card" href="https://mixcloud.com/DjBobRusso" target="_blank" rel="noopener">
                         <div class="social-content">
-                            <i class="ti ti-cloud social-icon-large"></i>
+                            <i class="ti ti-cloud" aria-hidden="true"></i>
                             <div>
                                 <span class="social-name">Mixcloud</span>
                                 <span class="social-handle">@DjBobRusso</span>
                             </div>
-                            <i class="ti ti-arrow-up-right social-arrow"></i>
+                            <i class="ti ti-arrow-up-right social-arrow" aria-hidden="true"></i>
                         </div>
                     </a>
-                    <a class="social-card social-card-large fade-in" href="https://facebook.com/DjBobRusso" target="_blank" rel="noopener">
+                    <a class="social-card" href="https://facebook.com/DjBobRusso" target="_blank" rel="noopener">
                         <div class="social-content">
-                            <i class="ti ti-brand-facebook social-icon-large"></i>
+                            <i class="ti ti-brand-facebook" aria-hidden="true"></i>
                             <div>
                                 <span class="social-name">Facebook</span>
                                 <span class="social-handle">@DjBobRusso</span>
                             </div>
-                            <i class="ti ti-arrow-up-right social-arrow"></i>
+                            <i class="ti ti-arrow-up-right social-arrow" aria-hidden="true"></i>
                         </div>
                     </a>
                 </div>
@@ -418,9 +556,19 @@
 
     <footer class="footer">
         <div class="container footer-container">
+            <div class="footer-cta">
+                <p class="footer-cta-line">¿Lo hacemos <span>sonar</span> juntos?</p>
+                <a class="btn btn-primary" href="https://wa.me/51902380981" target="_blank" rel="noopener" data-magnetic>
+                    <i class="ti ti-brand-whatsapp" aria-hidden="true"></i>
+                    <span>Escribir por WhatsApp</span>
+                </a>
+            </div>
             <div class="footer-main">
                 <div class="footer-brand">
-                    <a class="logo" href="#inicio">DJ BOB RUSSO</a>
+                    <a class="logo" href="#inicio">
+                        <span class="logo-mark" aria-hidden="true"></span>
+                        <span class="logo-text">DJ BOB RUSSO</span>
+                    </a>
                     <p>DJ con más de 15 años. Música variada. Selección impecable.</p>
                 </div>
                 <div class="footer-links">
@@ -429,6 +577,7 @@
                         <a href="#inicio">Inicio</a>
                         <a href="#sobre-mi">Sobre mí</a>
                         <a href="#musica">Música</a>
+                        <a href="#generos">Géneros</a>
                         <a href="#eventos">Eventos</a>
                         <a href="#booking">Booking</a>
                     </div>
@@ -448,17 +597,32 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© <span id="year"></span> DJ Bob Russo. Todos los derechos reservados.</p>
-                <p>Diseñado con atención al detalle</p>
+                <p>© <span id="year">2026</span> DJ Bob Russo. Todos los derechos reservados.</p>
+                <a class="footer-top" href="#top">
+                    <span>Volver arriba</span>
+                    <i class="ti ti-arrow-up" aria-hidden="true"></i>
+                </a>
             </div>
         </div>
     </footer>
 
-    <a class="whatsapp-float" href="https://wa.me/51902380981" target="_blank" rel="noopener" aria-label="Escríbeme por WhatsApp al +51 902 380 981">
-        <i class="ti ti-brand-whatsapp"></i>
-        <span>+51 902 380 981</span>
-    </a>
+    <div class="social-fab" id="social-fab">
+        <ul class="fab-list" id="fab-list" aria-label="Redes sociales de DJ Bob Russo">
+            <li><a class="fab-item" style="--brand:#25d366" aria-label="WhatsApp +51 902 380 981" href="https://wa.me/51902380981" target="_blank" rel="noopener"><span class="fab-label">WhatsApp</span><span class="fab-ico"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i></span></a></li>
+            <li><a class="fab-item" style="--brand:#ff4a6b" aria-label="Instagram @DjBobRusso" href="https://instagram.com/DjBobRusso" target="_blank" rel="noopener"><span class="fab-label">Instagram</span><span class="fab-ico"><i class="ti ti-brand-instagram" aria-hidden="true"></i></span></a></li>
+            <li><a class="fab-item" style="--brand:#4af0e0" aria-label="TikTok @DjBobRusso" href="https://tiktok.com/@DjBobRusso" target="_blank" rel="noopener"><span class="fab-label">TikTok</span><span class="fab-ico"><i class="ti ti-brand-tiktok" aria-hidden="true"></i></span></a></li>
+            <li><a class="fab-item" style="--brand:#ff3b30" aria-label="YouTube @DjBobRusso" href="https://youtube.com/@DjBobRusso" target="_blank" rel="noopener"><span class="fab-label">YouTube</span><span class="fab-ico"><i class="ti ti-brand-youtube" aria-hidden="true"></i></span></a></li>
+            <li><a class="fab-item" style="--brand:#ff7a3d" aria-label="SoundCloud @DjBobRusso" href="https://soundcloud.com/DjBobRusso" target="_blank" rel="noopener"><span class="fab-label">SoundCloud</span><span class="fab-ico"><i class="ti ti-brand-soundcloud" aria-hidden="true"></i></span></a></li>
+            <li><a class="fab-item" style="--brand:#9b7bff" aria-label="Mixcloud @DjBobRusso" href="https://mixcloud.com/DjBobRusso" target="_blank" rel="noopener"><span class="fab-label">Mixcloud</span><span class="fab-ico"><i class="ti ti-cloud" aria-hidden="true"></i></span></a></li>
+            <li><a class="fab-item" style="--brand:#5b8cff" aria-label="Facebook @DjBobRusso" href="https://facebook.com/DjBobRusso" target="_blank" rel="noopener"><span class="fab-label">Facebook</span><span class="fab-ico"><i class="ti ti-brand-facebook" aria-hidden="true"></i></span></a></li>
+        </ul>
+        <button class="fab-main" type="button" aria-expanded="false" aria-controls="fab-list" aria-label="Ver mis redes sociales">
+            <i class="ti ti-social fab-icon" aria-hidden="true"></i>
+            <i class="ti ti-x fab-icon fab-icon-close" aria-hidden="true"></i>
+        </button>
+    </div>
 
+    <script src="https://w.soundcloud.com/player/api.js"></script>
     <script src="js/main.js"></script>
 </body>
 
