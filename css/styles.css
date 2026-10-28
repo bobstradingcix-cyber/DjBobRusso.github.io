@@ -275,7 +275,8 @@ body:hover .cursor {
 .hero-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.8rem;
+    align-items: center;
 }
 
 .btn {
