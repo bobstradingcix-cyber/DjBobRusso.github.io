@@ -2140,6 +2140,55 @@ body:hover .spotlight {
     transform: none;
 }
 
+/* en pantallas táctiles el área útil de cada icono debe llegar a 44px */
+@media (pointer: coarse) {
+    .social-fab {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .fab-list {
+        gap: 0.55rem;
+    }
+
+    .fab-item {
+        min-width: 44px;
+        min-height: 44px;
+        touch-action: manipulation;
+    }
+
+    .fab-ico {
+        width: 44px;
+        height: 44px;
+        font-size: 1.25rem;
+    }
+
+    .fab-main {
+        width: 56px;
+        height: 56px;
+        font-size: 1.5rem;
+        touch-action: manipulation;
+    }
+}
+
+/* móvil en horizontal: el abanico se abre en una fila para no salirse de la pantalla */
+@media (max-height: 640px) and (orientation: landscape) {
+    .fab-list {
+        flex-direction: row-reverse;
+        align-items: flex-end;
+        gap: 0.45rem;
+    }
+
+    .js .fab-list li {
+        transform: translateX(14px) scale(0.82);
+    }
+
+    .fab-ico {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+}
+
 /* ---------- revelados ---------- */
 
 .line {
@@ -2308,18 +2357,6 @@ body:hover .spotlight {
 
     .fab-label {
         display: none;
-    }
-
-    .fab-ico {
-        width: 38px;
-        height: 38px;
-        font-size: 1.1rem;
-    }
-
-    .fab-main {
-        width: 52px;
-        height: 52px;
-        font-size: 1.35rem;
     }
 }
 

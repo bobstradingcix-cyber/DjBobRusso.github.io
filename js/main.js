@@ -9,6 +9,42 @@
     const finePointer = window.matchMedia('(pointer: fine)');
     const motionOK = () => !reduced.matches;
 
+    /* ---------- abanico de redes flotante ---------- */
+    /* se enrolla primero: si algo de abajo falla, el botón tiene que seguir funcionando */
+    (() => {
+        const fab = document.getElementById('social-fab');
+        if (!fab) return;
+
+        fab.querySelectorAll('.fab-list li').forEach((li, i) => li.style.setProperty('--i', i));
+        const toggle = fab.querySelector('.fab-main');
+        if (!toggle) return;
+
+        const setOpen = open => {
+            fab.classList.toggle('is-open', open);
+            toggle.setAttribute('aria-expanded', String(open));
+            toggle.setAttribute('aria-label', open ? 'Ocultar mis redes sociales' : 'Ver mis redes sociales');
+        };
+
+        try {
+            toggle.addEventListener('click', () => setOpen(!fab.classList.contains('is-open')));
+
+            /* pointerdown: en iOS el click fuera de un enlace no siempre llega al document */
+            document.addEventListener('pointerdown', e => {
+                if (fab.classList.contains('is-open') && !fab.contains(e.target)) setOpen(false);
+            });
+
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') setOpen(false);
+            });
+
+            fab.querySelectorAll('.fab-item').forEach(link => {
+                link.addEventListener('click', () => setOpen(false));
+            });
+        } catch (error) {
+            fab.classList.add('is-open');
+        }
+    })();
+
     /* ---------- año ---------- */
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -194,36 +230,6 @@
                 mobileNav.classList.remove('active');
                 navToggle.setAttribute('aria-expanded', 'false');
             });
-        });
-    }
-
-    /* ---------- abanico de redes flotante ---------- */
-    const fab = document.getElementById('social-fab');
-    const fabToggle = fab ? fab.querySelector('.fab-main') : null;
-
-    if (fab) fab.querySelectorAll('.fab-list li').forEach((li, i) => li.style.setProperty('--i', i));
-
-    function setFab(open) {
-        if (!fab) return;
-        fab.classList.toggle('is-open', open);
-        if (!fabToggle) return;
-        fabToggle.setAttribute('aria-expanded', String(open));
-        fabToggle.setAttribute('aria-label', open ? 'Ocultar mis redes sociales' : 'Ver mis redes sociales');
-    }
-
-    if (fabToggle) {
-        fabToggle.addEventListener('click', () => setFab(!fab.classList.contains('is-open')));
-
-        document.addEventListener('click', e => {
-            if (fab.classList.contains('is-open') && !fab.contains(e.target)) setFab(false);
-        });
-
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') setFab(false);
-        });
-
-        fab.querySelectorAll('.fab-item').forEach(link => {
-            link.addEventListener('click', () => setFab(false));
         });
     }
 
